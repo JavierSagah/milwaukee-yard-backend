@@ -1,8 +1,16 @@
-// Backend entry point placeholder
-import express from 'express';
+import express, { Request, Response } from 'express';
+import cors from 'cors';
+
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-app.get('/', (req, res) => res.send('API running!'));
+app.use(cors());
+app.use(express.json());
 
-app.listen(5000, () => console.log('Server on port 5000'));
+app.get('/', (req: Request, res: Response) => {
+  res.send('Milwaukee Yard API is running');
+});
 
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
